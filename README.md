@@ -12,4 +12,4 @@
 
 **Link to student's project**
 
-https://github.com/hungergames1412/se_project_spots
+https://hungergames1412.github.io/se_project_spots/
