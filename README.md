@@ -13,3 +13,7 @@
 **Link to student's project**
 
 https://hungergames1412.github.io/se_project_spots/
+
+**Link to student's video**
+
+https://drive.google.com/file/d/10C_POO2rdVJN9Ek5WEz7sjF5FJnRIMTa/view?usp=drive_link
