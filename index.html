@@ -116,81 +116,53 @@
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
           <button type="button" class="modal__close-btn"></button>
-          <h3 class="modal__title">Edit Profile</h3>
-          <form class="modal__form" novalidate>
-            <label for="profile-name-input" class="modal__label"
-              >Name
-              <input
-                id="profile-name-input"
-                type="text"
-                class="modal__input"
-                placeholder="Type your name"
-                minlength="2"
-                maxlength="40"
-                required
-              />
-              <span id="profile-name-input-error" class="modal__error"></span>
-            </label>
-            <label for="profile-description-input" class="modal__label"
-              >Description
-              <input
-                id="profile-description-input"
-                type="text"
-                class="modal__input"
-                placeholder="Describe yourself"
-                minlength="2"
-                maxlength="200"
-                required
-              />
-              <span id="profile-description-input-error" class="modal__error">
-              </span>
-            </label>
+          <h2 class="modal__title" id="edit-profile-btn">Edit Profile</h2>
+          <form class="modal__form">
+            <label for="profile-name-input" class="modal__label">Name</label>
+            <input
+              type="text"
+              id="profile-name-input"
+              class="modal__input"
+              placeholder="Type your name"
+            />
+            <label for="profile-description-input" class="modal__description"
+              >Description</label
+            >
+            <input
+              type="text"
+              id="profile-description-input"
+              class="modal__input"
+              placeholder="Describe yourself"
+            />
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
         </div>
       </div>
+
       <div class="modal" id="new-post-modal">
         <div class="modal__container">
           <button type="button" class="modal__close-btn"></button>
-          <h3 class="modal__title">New post</h3>
-          <form class="modal__form" novalidate>
-            <label for="card-image-input" class="modal__label"
-              >Image link
-              <input
-                id="card-image-input"
-                type="url"
-                class="modal__input"
-                placeholder="Place a link to a picture"
-                required
-              />
-              <span id="card-image-input-error" class="modal__error"></span>
-            </label>
-            <label for="image-caption-input" class="modal__label"
-              >Caption
-              <input
-                id="image-caption-input"
-                type="text"
-                class="modal__input"
-                placeholder="Type your caption"
-                minlength="2"
-                maxlength="30"
-                required
-              />
-              <span id="image-caption-input-error" class="modal__error"></span>
-            </label>
+          <h2 class="modal__title">New post</h2>
+          <form class="modal__form">
+            <label for="new-post-link" class="modal__label">Image link</label>
+            <input
+              type="text"
+              id="new-post-link"
+              class="modal__input"
+              placeholder="Paste a link to the picture"
+            />
+            <label for="new-post-caption" class="modal__description"
+              >Caption</label
+            >
+            <input
+              type="text"
+              id="new-post-caption"
+              class="modal__input"
+              placeholder="Type your caption"
+            />
             <button type="submit" class="modal__submit-btn">Save</button>
           </form>
         </div>
-      </div>
-    </div>
-    <div class="modal modal_type_preview" id="preview-modal">
-      <div class="modal__image-container">
-        <button
-          type="button"
-          class="modal__close-btn modal__close-btn_type_preview"
-        ></button>
-        <img src="#" alt="" class="modal__image" />
-        <p class="modal__caption"></p>
       </div>
     </div>
   </body>
