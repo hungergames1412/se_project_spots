@@ -6,6 +6,7 @@ const profileJobElement = document.querySelector(".profile__description");
 const profileFormElement = editProfileModal.querySelector(".modal__form");
 const nameInput = editProfileModal.querySelector("#profile-name-input");
 const jobInput = editProfileModal.querySelector("#profile-description-input");
+
 const newPostBtn = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
@@ -14,13 +15,13 @@ const linkInput = newPostModal.querySelector("#new-post-link");
 const descriptionInput = newPostModal.querySelector("#new-post-caption");
 
 const initialCards = [
-{ name: "Val Thorens", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg" },
-{ name: "Restaurant terrace", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg" },
-{ name: "An outdoor cafe", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg" },
-{ name: "A very long bridge, over the forest and through the trees", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg" },
-{ name: "Tunnel with morning light", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg" },
-{ name: "Mountain house", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg" }
-]
+  { name: "Val Thorens", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg" },
+  { name: "Restaurant terrace", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg" },
+  { name: "An outdoor cafe", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg" },
+  { name: "A very long bridge, over the forest and through the trees", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg" },
+  { name: "Tunnel with morning light", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg" },
+  { name: "Mountain house", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg" }
+];
 
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
@@ -30,125 +31,81 @@ function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
-editProfileBtn.addEventListener("click", function(){
-    nameInput.value = profileNameElement.textContent;
-    jobInput.value = profileJobElement.textContent;
-    openModal(editProfileModal);
+// --- Edit profile modal ---
+editProfileBtn.addEventListener("click", function() {
+  nameInput.value = profileNameElement.textContent;
+  jobInput.value = profileJobElement.textContent;
+  openModal(editProfileModal);
 });
 
-editProfileCloseBtn.addEventListener("click", function(){
-    closeModal(editProfileModal);
+editProfileCloseBtn.addEventListener("click", function() {
+  closeModal(editProfileModal);
+});
+
+function fillInputFields() {
+  profileNameElement.textContent = nameInput.value;
+  profileJobElement.textContent = jobInput.value;
 }
-);
-
-newPostBtn.addEventListener("click", function(){
-    openModal(newPostModal);
-});
-
-newPostCloseBtn.addEventListener("click", function(){
-    closeModal(newPostModal);
-});
-
-function fillInputFields(){
-    profileNameElement.textContent = nameInput.value;
-    profileJobElement.textContent = jobInput.value;
-};
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   fillInputFields();
   closeModal(editProfileModal);
-};
-
-profileFormElement.addEventListener('submit', handleProfileFormSubmit);
-
-function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  console.log(linkInput.value);
-  console.log(descriptionInput.value);
-  closeModal(newPostModal);
-  evt.target.reset();
 }
 
-addCardFormElement.addEventListener('submit', function(evt){
-evt.preventDefault();
+profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
-
-
-}
-
-// this variable is needed right?
-  const cardList = document.querySelector('.cards__list');
-
-initialCards.forEach(function(item){
-  const cardElement = getCardElement(item));
-  //prepend the created card element to the appropriate HTML container (the one where the hardcoed cards were located)
-  cardList.prepend(card);
+// --- New post modal ---
+newPostBtn.addEventListener("click", function() {
+  openModal(newPostModal);
 });
 
-//select template by it's id
-const cardTemplate = document
-.querySelector("#card-Template") //.textContent;
+newPostCloseBtn.addEventListener("click", function() {
+  closeModal(newPostModal);
+});
 
-//create function
-//why is "data" passed through instead of "item" ?
-//clone the content of the template
+addCardFormElement.addEventListener("submit", function(evt) {
+  evt.preventDefault();
+
+  const newCardData = {
+    name: descriptionInput.value,
+    link: linkInput.value
+  };
+
+  const newCardElement = getCardElement(newCardData);
+  cardList.prepend(newCardElement);
+
+  closeModal(newPostModal);
+  evt.target.reset();
+});
+
+// --- Cards ---
+const cardList = document.querySelector(".cards__list");
+const cardTemplate = document.querySelector("#card-Template");
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
-  .querySelector(".card")
-  .cloneNode(true);
+    .querySelector(".card")
+    .cloneNode(true);
 
-//select the clone's title and image elements and store them in variables
-const cardImageEl = cardElement.querySelector(".card__image");
-const cardTitleEl = cardElement.querySelector(".card__title");
+  const cardImageEl = cardElement.querySelector(".card__image");
+  const cardTitleEl = cardElement.querySelector(".card__title");
+  const likeButton = cardElement.querySelector(".card__like-button");
 
-//Assign the data parameter’s link property to the image element’s src property.
-imageElement.src = data.link;
+  cardImageEl.src = data.link;
+  cardImageEl.alt = data.name;
+  cardTitleEl.textContent = data.name;
 
-// Assign the data parameter’s name property to the image element’s alt property.
-imageElement.alt = data.name;
+  // like button toggle
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_is-active");
+  });
 
-// Assign the data parameter’s name property to the name element’s textContent property.
-nameElement.textContent = data.name;
-
-//return the cloned card element
-return getCardElement;
+  return cardElement;
 }
 
-//"NEW POST" MODAL SUBMISSION
-
-//these have already been called...
-//const nameInput = document.querySelector('.profile-name-input');
-//const descriptionInput = document.querySelector('.profile-description-input');
-
-const cardName = nameInput.value;
-//const linkInput = linkInput.value;
-
-//create a data object with the form values
-
-const newCardData = {
-  name: cardName,
-  link: cardLink
-};
-
-//create and add the card
-
-const newCardElement = getCardElement(newCardData);
-
-//add it as the first element in the container
-
-cardContainer.prepend(newCardElement);
-
-//when the user clicks on the card’s heart-shaped “like button,” the heart's color should change.
-
-  // 1. Select the card element's like button
-  //why is the cardElement being selected?
-
-  const likeButton = cardElement.querySelector(".card__like-button")
-
-  // 2. Set a click listener on it
-  //.classList.toggle ??
-
-  likeButton.addEventListener("click", () => {
-  likeButton.classList.toggle('card__like-button_is-active');
-  })
+// render initial cards
+initialCards.forEach(function(item) {
+  const cardElement = getCardElement(item);
+  cardList.prepend(cardElement);
+});
