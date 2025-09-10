@@ -14,15 +14,10 @@ const addCardFormElement = newPostModal.querySelector(".modal__form");
 const linkInput = newPostModal.querySelector("#new-post-link");
 const descriptionInput = newPostModal.querySelector("#new-post-caption");
 
-const initialCards = [
-  { name: "Val Thorens", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/1-photo-by-moritz-feldmann-from-pexels.jpg" },
-  { name: "Restaurant terrace", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/2-photo-by-ceiline-from-pexels.jpg" },
-  { name: "An outdoor cafe", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/3-photo-by-tubanur-dogan-from-pexels.jpg" },
-  { name: "A very long bridge, over the forest and through the trees", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/4-photo-by-maurice-laschet-from-pexels.jpg" },
-  { name: "Tunnel with morning light", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/5-photo-by-van-anh-nguyen-from-pexels.jpg" },
-  { name: "Mountain house", link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg" }
-];
+const cardList = document.querySelector(".cards__list");
+const cardTemplate = document.querySelector("#card-template");
 
+// --- Modal helpers ---
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
 }
@@ -32,44 +27,40 @@ function closeModal(modal) {
 }
 
 // --- Edit profile modal ---
-editProfileBtn.addEventListener("click", function() {
+editProfileBtn.addEventListener("click", function () {
   nameInput.value = profileNameElement.textContent;
   jobInput.value = profileJobElement.textContent;
   openModal(editProfileModal);
 });
 
-editProfileCloseBtn.addEventListener("click", function() {
+editProfileCloseBtn.addEventListener("click", function () {
   closeModal(editProfileModal);
 });
 
-function fillInputFields() {
-  profileNameElement.textContent = nameInput.value;
-  profileJobElement.textContent = jobInput.value;
-}
-
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
-  fillInputFields();
+  profileNameElement.textContent = nameInput.value;
+  profileJobElement.textContent = jobInput.value;
   closeModal(editProfileModal);
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 // --- New post modal ---
-newPostBtn.addEventListener("click", function() {
+newPostBtn.addEventListener("click", function () {
   openModal(newPostModal);
 });
 
-newPostCloseBtn.addEventListener("click", function() {
+newPostCloseBtn.addEventListener("click", function () {
   closeModal(newPostModal);
 });
 
-addCardFormElement.addEventListener("submit", function(evt) {
+addCardFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
 
   const newCardData = {
     name: descriptionInput.value,
-    link: linkInput.value
+    link: linkInput.value,
   };
 
   const newCardElement = getCardElement(newCardData);
@@ -79,9 +70,15 @@ addCardFormElement.addEventListener("submit", function(evt) {
   evt.target.reset();
 });
 
-// --- Cards ---
-const cardList = document.querySelector(".cards__list");
-const cardTemplate = document.querySelector("#card-Template");
+// --- Card utilities ---
+function setupCardListeners(cardElement) {
+  const likeButton = cardElement.querySelector(".card__like-button");
+  if (likeButton) {
+    likeButton.addEventListener("click", () => {
+      likeButton.classList.toggle("card__like-button_is-active");
+    });
+  }
+}
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -90,22 +87,18 @@ function getCardElement(data) {
 
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardTitleEl = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
 
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
   cardTitleEl.textContent = data.name;
 
-  // like button toggle
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_is-active");
-  });
+  // set up interactions
+  setupCardListeners(cardElement);
 
   return cardElement;
 }
 
-// render initial cards
-initialCards.forEach(function(item) {
-  const cardElement = getCardElement(item);
-  cardList.prepend(cardElement);
+// --- Initialize existing hardcoded cards ---
+document.querySelectorAll(".card").forEach((card) => {
+  setupCardListeners(card);
 });
