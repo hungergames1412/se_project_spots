@@ -1,7 +1,7 @@
 .cards__list {
   list-style-type: none;
   padding: 0 0 40px;
-  margin: 20px 0;
+  margin: 20px 0 0;
   justify-content: center;
   display: grid;
   grid-template-columns: repeat(auto-fit, 413px);
