@@ -98,11 +98,13 @@
   background-image: url(../images/close.svg);
   border: 0px;
   background-color: transparent;
+  opacity: 0.4;      /* added */
+  padding: 0;        /* added */
 }
 
 .modal__close-btn:hover {
   cursor: pointer;
-  background-image: url(../images/close-hover.svg);
+  opacity: 1;  
 }
 
 .modal__input:hover {
@@ -135,5 +137,6 @@
 
   .modal__input {
     font-size: 16px;
+    margin-bottom: 24px; /* added */
   }
 }
