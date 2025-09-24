@@ -91,6 +91,11 @@ function handleAddCardSubmit(evt) {
 
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 
+//for (let i = 0; i < initialCards.length;i++) {
+//const cardElement = getCardElement(initialCards[i]);
+//cardsList.append(cardElement);
+//}
+
 initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
