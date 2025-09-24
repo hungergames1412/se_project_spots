@@ -1,3 +1,4 @@
+// --- Initial Cards ---
 const initialCards = [
   {
     name: "Val Thorens",
@@ -36,16 +37,15 @@ const nameInput = editProfileModal.querySelector("#profile-name-input");
 const jobInput = editProfileModal.querySelector("#profile-description-input");
 
 const newPostBtn = document.querySelector(".profile__add-btn");
-const newPostModal = document.querySelector("#add-card-modal"); // ✅ fixed
+const newPostModal = document.querySelector("#new-post-modal");
 const newPostCloseBtn = newPostModal.querySelector(".modal__close-btn");
 const addCardFormElement = newPostModal.querySelector(".modal__form");
-const descriptionInput = newPostModal.querySelector("#add-card-name-input"); // fixed
-const linkInput = newPostModal.querySelector("#add-card-link-input"); // fixed
+const descriptionInput = newPostModal.querySelector("#new-post-caption");
+const linkInput = newPostModal.querySelector("#new-post-link");
 
-const cardsList = document.querySelector(".cards__list"); // needed for appending cards
-const cardTemplate = document.querySelector("#card-template").content;
+const cardsList = document.querySelector(".cards__list"); // <-- added missing selector
 
-// --- Modal helpers ---
+// --- Modal Helpers ---
 function openModal(modal) {
   modal.classList.add("modal_is-opened");
 }
@@ -54,9 +54,8 @@ function closeModal(modal) {
   modal.classList.remove("modal_is-opened");
 }
 
-// --- Edit profile modal ---
+// --- Edit Profile Modal ---
 editProfileBtn.addEventListener("click", function () {
-  // preload values into the form
   nameInput.value = profileNameElement.textContent;
   jobInput.value = profileJobElement.textContent;
   openModal(editProfileModal);
@@ -75,7 +74,7 @@ function handleProfileFormSubmit(evt) {
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
-// --- New post modal ---
+// --- New Post Modal ---
 newPostBtn.addEventListener("click", function () {
   openModal(newPostModal);
 });
@@ -93,7 +92,7 @@ function handleAddCardSubmit(evt) {
   };
 
   const cardElement = getCardElement(newCard);
-  cardsList.prepend(cardElement);
+  cardsList.prepend(cardElement); // add new card to top
 
   closeModal(newPostModal);
   evt.target.reset();
@@ -101,32 +100,24 @@ function handleAddCardSubmit(evt) {
 
 addCardFormElement.addEventListener("submit", handleAddCardSubmit);
 
-// --- Card rendering ---
+// --- Create Card Element ---
 function getCardElement(data) {
-  const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardTitle = cardElement.querySelector(".card__title");
+  const cardTemplate = document
+    .querySelector("#card-template")
+    .content.querySelector(".card")
+    .cloneNode(true);
+
+  const cardImage = cardTemplate.querySelector(".card__image");
+  const cardTitle = cardTemplate.querySelector(".card__title");
 
   cardImage.src = data.link;
   cardImage.alt = data.name;
   cardTitle.textContent = data.name;
 
-  // Like button
-  const likeBtn = cardElement.querySelector(".card__like-btn");
-  likeBtn.addEventListener("click", () => {
-    likeBtn.classList.toggle("card__like-btn_active");
-  });
-
-  // Delete button
-  const deleteBtn = cardElement.querySelector(".card__delete-btn");
-  deleteBtn.addEventListener("click", () => {
-    cardElement.remove();
-  });
-
-  return cardElement;
+  return cardTemplate;
 }
 
-// Render initial cards
+// --- Render Initial Cards ---
 initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
