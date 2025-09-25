@@ -34,12 +34,12 @@
           <!-- Template for dynamically created cards -->
           <template id="card-template">
             <li class="card">
-              <img class="card__image" src="" alt="" />
+              <img class="card__image" src="#" alt="Card image" />
               <div class="card__content">
                 <h2 class="card__title"></h2>
                 <div class="card__buttons">
-                  <button type="button" class="card__like-button"></button>
-                  <button type="button" class="card__delete-button"></button>
+                  <button type="button" class="card__like-button" aria-label="Like this card"></button>
+                  <button type="button" class="card__delete-button" aria-label="Delete this card"></button>
                 </div>
               </div>
             </li>
@@ -50,8 +50,8 @@
       <!-- Preview Image Modal -->
       <div class="modal" id="image-preview-modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn"></button>
-          <img class="modal__image" src="" alt="" />
+          <button type="button" class="modal__close-btn" aria-label="Close preview"></button>
+          <img class="modal__image" src="#" alt="Preview image" />
           <p class="modal__caption"></p>
         </div>
       </div>
@@ -63,7 +63,7 @@
       <!-- Modals for Edit Profile and New Post -->
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn"></button>
+          <button type="button" class="modal__close-btn" aria-label="Close edit profile"></button>
           <h2>Edit Profile</h2>
           <form class="modal__form">
             <input type="text" id="profile-name-input" placeholder="Name" required />
@@ -75,7 +75,7 @@
 
       <div class="modal" id="new-post-modal">
         <div class="modal__container">
-          <button type="button" class="modal__close-btn"></button>
+          <button type="button" class="modal__close-btn" aria-label="Close new post"></button>
           <h2>New Post</h2>
           <form class="modal__form">
             <input type="text" id="new-post-link" placeholder="Image link" required />
