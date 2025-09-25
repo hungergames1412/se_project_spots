@@ -77,12 +77,10 @@
   margin-bottom: 32px;
   padding: 16px;
   border-radius: 8px;
-  border: 1px;
-  border-color: rgba(33, 33, 33, 0.4);
+  border: 1px solid rgba(33, 33, 33, 0.4);
   color: rgba(33, 33, 33, 1);
   font-size: 20px;
   font-weight: 500;
-  border-style: solid;
 }
 
 .modal__input::placeholder {
@@ -96,10 +94,10 @@
   top: 32px;
   right: 50px;
   background-image: url(../images/close.svg);
-  border: 0px;
+  border: 0;
   background-color: transparent;
-  opacity: 0.4;      /* added */
-  padding: 0;        /* added */
+  opacity: 0.4;
+  padding: 0;
 }
 
 .modal__close-btn:hover {
@@ -107,13 +105,30 @@
   opacity: 1;  
 }
 
+/* Removed cursor from input hover for accessibility */
 .modal__input:hover {
   border-color: rgba(33, 33, 33, 1);
-  cursor: pointer;
 }
 
 .modal__input:focus {
   color: black;
+}
+
+/* New styles for preview modal image and caption */
+.modal__image {
+  max-width: 90vw;
+  max-height: 80vh;
+  border-radius: 8px;
+  display: block;
+}
+
+.modal__caption {
+  margin-top: 12px;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  max-width: 90vw;
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 480px) {
@@ -137,6 +152,6 @@
 
   .modal__input {
     font-size: 16px;
-    margin-bottom: 24px; /* added */
+    margin-bottom: 24px;
   }
 }
