@@ -7,6 +7,7 @@
 
 .header__logo {
   margin: 0 auto;
-  max-width: 94px;
-  max-height: 64px;
+  width: 94px;   /* Fixed width to match Figma */
+  height: 26px;  /* Fixed height to match Figma */
+  display: block; /* Ensures proper centering */
 }
