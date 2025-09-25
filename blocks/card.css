@@ -5,6 +5,7 @@
   object-fit: cover;
   border-radius: 8px;
   display: block;
+  cursor: pointer; /* Added: indicates the image is clickable */
 }
 
 .card__like-button {
@@ -18,6 +19,13 @@
   background-repeat: no-repeat;
   cursor: pointer;
   opacity: 40%;
+  transition: opacity 0.2s;
+}
+
+/* Active state for liked card */
+.card__like-button_active {
+  background-image: url(../images/like-icon-filled.svg); /* Filled heart icon */
+  opacity: 100%; /* Fully visible when active */
 }
 
 .card__like-button:hover {
@@ -29,6 +37,20 @@
   display: flex;
   justify-content: space-between;
   padding-top: 12px;
+  align-items: center;
+}
+
+/* Delete button styling */
+.card__delete-button {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-image: url(../images/delete-icon.svg); /* Trashcan icon */
+  background-color: transparent;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .card__title {
@@ -51,7 +73,4 @@
   }
 
   .card__title {
-    font-size: 16px;
-    max-width: 250px;
-  }
-}
+    font-size: 16
