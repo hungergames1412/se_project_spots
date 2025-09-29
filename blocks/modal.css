@@ -105,7 +105,6 @@
   opacity: 1;  
 }
 
-/* Removed cursor from input hover for accessibility */
 .modal__input:hover {
   border-color: rgba(33, 33, 33, 1);
 }
@@ -114,7 +113,6 @@
   color: black;
 }
 
-/* New styles for preview modal image and caption */
 .modal__image {
   max-width: 90vw;
   max-height: 80vh;
@@ -140,20 +138,16 @@
     max-width: none;
     width: 100%;
   }
-
   .modal__title {
     font-size: 20px;
   }
-
   .modal__container {
     padding: 22px 12px 12px;
   }
-
   .modal__close-btn {
     top: 22px;
     right: 12px;
   }
-
   .modal__input {
     font-size: 16px;
     margin-bottom: 24px;
@@ -165,7 +159,6 @@
     top: -48px;
     right: 0;
   }
-
   .modal__image {
     max-width: unset;
   }
