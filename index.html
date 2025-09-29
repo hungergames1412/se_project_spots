@@ -11,7 +11,6 @@
       <header class="header">
         <img src="./images/logo.svg" alt="Spots Logo" class="header__logo" />
       </header>
-
       <main class="content">
         <section class="profile page__section">
           <img src="./images/avatar.jpg" alt="Bessie Coleman" class="profile__avatar" />
@@ -22,15 +21,12 @@
               <img src="./images/pencil.svg" alt="Pencil Icon" /> Edit Profile
             </button>
           </div>
-
           <button type="button" class="profile__add-btn">
             <img src="./images/plus.svg" alt="Plus Icon" /> New Post
           </button>
         </section>
-
         <section class="cards page__section">
           <ul class="cards__list"></ul>
-
           <!-- Template for dynamically created cards -->
           <template id="card-template">
             <li class="card">
@@ -46,20 +42,20 @@
           </template>
         </section>
       </main>
-
-      <!-- Preview Image Modal -->
-      <div class="modal" id="image-preview-modal">
-        <div class="modal__container">
-          <button type="button" class="modal__close-btn" aria-label="Close preview"></button>
-          <img class="modal__image" src="#" alt="Preview image" />
+      <div class="modal modal_type_preview" id="preview-modal">
+        <div class="modal__image-container">
+          <button
+            type="button"
+            class="modal__close-btn modal__close-btn_type_preview"
+          >
+            <img src="./images/whiteCloseBtn.svg" alt="close icon" />
+          </button>
+          <img src="#" alt="" class="modal__image" />
           <p class="modal__caption"></p>
         </div>
-      </div>
-
       <footer class="footer">
         <p>2025 &copy; Spots</p>
       </footer>
-
       <!-- Modals for Edit Profile and New Post -->
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
