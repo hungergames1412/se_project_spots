@@ -159,3 +159,14 @@
     margin-bottom: 24px;
   }
 }
+
+@media screen and (max-width: 627px) {
+  .modal__close-btn_type_preview {
+    top: -48px;
+    right: 0;
+  }
+
+  .modal__image {
+    max-width: unset;
+  }
+}
