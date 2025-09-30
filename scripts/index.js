@@ -36,7 +36,7 @@ const cardTemplate = document.querySelector("#card-template");
 
 const editProfileModal = document.querySelector("#edit-profile-modal");
 const newPostModal = document.querySelector("#new-post-modal");
-const imagePreviewModal = document.querySelector("#image-preview-modal");
+const imagePreviewModal = document.querySelector("#preview-modal");
 
 // Edit Profile DOM
 const editProfileBtn = document.querySelector(".profile__edit-btn");
@@ -53,7 +53,7 @@ const linkInput = newPostModal.querySelector("#new-post-link");
 const captionInput = newPostModal.querySelector("#new-post-caption");
 
 // Image Preview DOM
-const imagePreviewCloseBtn = imagePreviewModal.querySelector(".modal__close-btn");
+const imagePreviewCloseBtn = imagePreviewModal.querySelector(".modal__close-btn_type_preview");
 
 // --- Modal Helpers ---
 function openModal(modal) {
