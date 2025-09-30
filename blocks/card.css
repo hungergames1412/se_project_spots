@@ -31,9 +31,8 @@
 }
 
 .card__like-button_active:hover {
-  opacity: 1;
+  opacity: 70%;
 }
-
 
 .card__content {
   display: flex;
