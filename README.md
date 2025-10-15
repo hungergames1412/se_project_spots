@@ -12,11 +12,27 @@
 
 **Description & Functionality**
 
-Spots is an interactive social media where users can share and like photos and personalize their profile. The web application is responsive from desktop to mobile with minor adjustments such as columns and rows.
+Spots allows users to:
+
+Edit their profile (name and description)
+
+Add new photo cards with captions
+
+Like and delete cards
+
+Preview images in a modal
+
+The web application is fully responsive, adapting from desktop to mobile with minor layout adjustments. In the profile section, flexbox allows content to transition smoothly. In the cards section, CSS grid ensures uniform card layout. Media queries adjust the layout for smaller screen sizes.
 
 **Technologies & Techniques**
 
-Due to the use flexbox, grid, and media queries, the desktop version is available in the mobile version as well. In the profile section, flexbox allows the contents to transition. In the cards section, the grid template allows a smooth transition as each piece of content is uniform unlike the profile section. Media queries are used for when the size of the screen gets too small to contain the contents of the whole page.
+HTML & CSS: Semantic markup, Flexbox, CSS Grid, Media Queries
+
+JavaScript: DOM manipulation, event listeners, modular functions
+
+Form Validation: Real-time input validation with error messages, disabled submit buttons for invalid inputs
+
+UX Enhancements: Modals can be closed by clicking outside or pressing the Escape key
 
 **Link to student's project**
 
