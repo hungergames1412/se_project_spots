@@ -73,6 +73,7 @@ document.querySelectorAll(".modal").forEach((modal) => {
   modal.addEventListener("mousedown", (evt) => {
     if (evt.target.classList.contains("modal")) {
       closeModal(modal);
+      resetValidation(modal.querySelector(".modal__form"), settings);
     }
   });
 });
@@ -83,17 +84,25 @@ editProfileBtn.addEventListener("click", () => {
   openModal(editProfileModal);
 });
 
-editProfileCloseBtn.addEventListener("click", () => closeModal(editProfileModal));
+editProfileCloseBtn.addEventListener("click", () => {
+  closeModal(editProfileModal);
+  resetValidation(profileForm, settings);
+});
 
 profileForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   document.querySelector(".profile__name").textContent = nameInput.value;
   document.querySelector(".profile__description").textContent = jobInput.value;
   closeModal(editProfileModal);
+  resetValidation(profileForm, settings);
 });
 
 newPostBtn.addEventListener("click", () => openModal(newPostModal));
-newPostCloseBtn.addEventListener("click", () => closeModal(newPostModal));
+
+newPostCloseBtn.addEventListener("click", () => {
+  closeModal(newPostModal);
+  resetValidation(newPostForm, settings);
+});
 
 newPostForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
@@ -108,6 +117,7 @@ newPostForm.addEventListener("submit", (evt) => {
 
   newPostForm.reset();
   closeModal(newPostModal);
+  resetValidation(newPostForm, settings);
 });
 
 imagePreviewCloseBtn.addEventListener("click", () => closeModal(imagePreviewModal));
@@ -150,4 +160,5 @@ initialCards.forEach((item) => {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
 
