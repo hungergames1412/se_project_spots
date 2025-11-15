@@ -1,0 +1,13 @@
+.header {
+  background-color: #fff;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.header__logo {
+  margin: 0 auto;
+  width: 94px;   /* Fixed width to match Figma */
+  height: 26px;  /* Fixed height to match Figma */
+  display: block; /* Ensures proper centering */
+}
