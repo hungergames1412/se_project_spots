@@ -1,9 +1,9 @@
-import "../index.css";
+import "../pages/index.css";
 import {
   enableValidation,
   settings,
   resetValidation,
-} from "./scripts/validation.js";
+} from "../scripts/validation.js";
 import Api from "../utils/api.js";
 import logo from "../images/logo.svg";
 import avatarPlaceholder from "../images/avatar.jpg";
