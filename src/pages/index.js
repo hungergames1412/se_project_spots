@@ -44,6 +44,11 @@ const profileNameEl = document.querySelector(".profile__name");
 const profileDescriptionEl = document.querySelector(".profile__description");
 const profileAvatarEl = document.querySelector(".profile__avatar");
 
+// ---- DELETE MODAL ELEMENTS ----
+const deleteConfirmModal = document.querySelector("#delete-confirm-modal");
+const deleteConfirmBtn = deleteConfirmModal.querySelector("#delete-confirm-btn");
+const deleteModalCloseBtn = deleteConfirmModal.querySelector(".modal__close-btn");
+
 document.querySelector(".header__logo").src = logo;
 profileAvatarEl.src = avatarPlaceholder;
 editProfileBtn.querySelector("img").src = pencil;
@@ -113,11 +118,12 @@ function createCardElement(data) {
     }
   });
 
+  // ---- DELETE BUTTON CLICK ----
   deleteButton.style.backgroundImage = `url(${deleteIcon})`;
   deleteButton.addEventListener("click", () => {
     selectedCard = cardElement;
     selectedCardId = data._id;
-    handleDeleteSubmit();
+    openModal(deleteConfirmModal);
   });
 
   cardImage.addEventListener("click", () => {
@@ -132,17 +138,25 @@ function createCardElement(data) {
   return cardElement;
 }
 
-function handleDeleteSubmit() {
+// ---- DELETE CONFIRMATION BUTTON ----
+deleteConfirmBtn.addEventListener("click", () => {
   if (!selectedCard || !selectedCardId) return;
+
   api
     .removeCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
       selectedCard = null;
       selectedCardId = null;
+      closeModal(deleteConfirmModal);
     })
     .catch(console.error);
-}
+});
+
+// ---- DELETE MODAL CLOSE BUTTON ----
+deleteModalCloseBtn.addEventListener("click", () => {
+  closeModal(deleteConfirmModal);
+});
 
 // Profile modal
 editProfileBtn.addEventListener("click", () => {
