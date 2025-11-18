@@ -44,13 +44,18 @@ export const disableButton = (buttonEl, settings) => {
   buttonEl.classList.add(settings.inactiveButtonClass);
 };
 
+// Enable submit button
+export const enableButton = (buttonEl, settings) => {
+  buttonEl.disabled = false;
+  buttonEl.classList.remove(settings.inactiveButtonClass);
+};
+
 // Toggle button state (enable/disable)
 export const toggleButtonState = (inputList, buttonEl, settings) => {
   if (hasInvalidInput(inputList)) {
     disableButton(buttonEl, settings);
   } else {
-    buttonEl.disabled = false;
-    buttonEl.classList.remove(settings.inactiveButtonClass);
+    enableButton(buttonEl, settings);
   }
 };
 
@@ -58,29 +63,4 @@ export const toggleButtonState = (inputList, buttonEl, settings) => {
 export const resetValidation = (formEl, settings) => {
   const inputList = Array.from(formEl.querySelectorAll(settings.inputSelector));
   const buttonElement = formEl.querySelector(settings.submitButtonSelector);
-  inputList.forEach((input) => hideInputError(formEl, input, settings));
-  toggleButtonState(inputList, buttonElement, settings);
-};
-
-// Set event listeners for form fields
-export const setEventListeners = (formEl, config) => {
-  const inputList = Array.from(formEl.querySelectorAll(config.inputSelector));
-  const buttonElement = formEl.querySelector(config.submitButtonSelector);
-
-  toggleButtonState(inputList, buttonElement, config);
-
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", () => {
-      checkInputValidity(formEl, inputElement, config);
-      toggleButtonState(inputList, buttonElement, config);
-    });
-  });
-};
-
-// Enable form validation
-export const enableValidation = (config) => {
-  const formList = document.querySelectorAll(config.formSelector);
-  formList.forEach((formEl) => {
-    setEventListeners(formEl, config);
-  });
-};
+  inputList.forEach((input) => hideInputError(formEl, input, set
