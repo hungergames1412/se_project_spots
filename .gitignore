@@ -1,0 +1,6 @@
+<<<<<<< HEAD
+.DS_Store
+=======
+node_modules/
+dist/
+>>>>>>> fada529 (initial commit with Spots project files)
