@@ -40,9 +40,4 @@ https://hungergames1412.github.io/se_project_spots/
 
 **Link to student's video**
 
-<<<<<<< HEAD
-Video 1: https://drive.google.com/file/d/10C_POO2rdVJN9Ek5WEz7sjF5FJnRIMTa/view?usp=drive_link
-Video 2: https://drive.google.com/file/d/13n8IffLcArjs-wPpkwfHHN7bW7J_1woK/view?usp=drive_link
-=======
 https://drive.google.com/file/d/10C_POO2rdVJN9Ek5WEz7sjF5FJnRIMTa/view?usp=drive_link
->>>>>>> fada529 (initial commit with Spots project files)
