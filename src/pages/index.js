@@ -110,9 +110,9 @@ function getCardElement(data) {
 
   const cardLikeBtnEl = cardElement.querySelector(".card__like-btn");
 
-  // if (data.likes.some((user) => user._id === currentUserId)) {
-  //   cardLikeBtnEl.classList.add("card__like-btn_active");
-  // }
+  if (data.likes.some((user) => user._id === currentUserId)) {
+    cardLikeBtnEl.classList.add("card__like-btn_active");
+  }
 
   cardLikeBtnEl.addEventListener("click", (evt) => {
     handleLike(evt, data._id);
@@ -146,10 +146,6 @@ function handleLike(evt, id) {
       console.log("Error updating like status:", err);
     });
 }
-
-previewCloseBtn.addEventListener("click", function () {
-  closeModal(previewModal);
-});
 
 editProfileButton.addEventListener("click", function () {
   editProfileNameInput.value = profileNameElement.textContent;
@@ -206,7 +202,7 @@ function handleAddCardSubmit(evt) {
     .then((newCardData) => {
       renderCard(newCardData, "prepend");
       addCardFormElement.reset();
-      disabledButton(newPostSaveBtn, settings);
+      disableButton(newPostSaveBtn, settings);
       closeModal(newPostModal);
     })
     .catch(console.error)
@@ -225,6 +221,7 @@ function handleAvatarSubmit(evt) {
     .then((data) => {
       profileAvatarElement.src = data.avatar;
       avatarFormElement.reset();
+      disableButton(submitBtn, settings);
       closeModal(avatarModal);
     })
     .catch(console.error)
